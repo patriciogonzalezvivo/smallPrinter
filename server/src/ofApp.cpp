@@ -79,10 +79,13 @@ void ofApp::update(){
                 } else if (values[0] == "keyPanel"){
                     printer.setKeyPanel(ofToBool(values[1]));
                     cout << values[0] << " set to " << ofToBool(values[1]) << endl;
+                } else if (values[0] == "print"){
+                    printer.print(commands[i]);
+                    cout << "Printing: " << commands[i]<< endl;
+                } else if (values[0] == "println"){
+                    printer.println(commands[i]);
+                    cout << "Printing: " << commands[i] << "\\n" << endl;
                 }
-            } else {
-                cout << "Printing: " << commands[i] << endl;
-                printer.println(commands[i]);
             }
             
             commands.erase(commands.begin()+i);
@@ -145,11 +148,7 @@ void ofApp::onMessage( ofxLibwebsockets::Event& args ){
                 commands.push_back(newcommands[i]);
             }
         } else {
-            
-            vector<string> image = ofSplitString(args.data.getText(), ":");
-            if (image.size()!=3){
-                commands.push_back(args.message);
-            }
+            commands.push_back(args.message);
         }
         
     }
