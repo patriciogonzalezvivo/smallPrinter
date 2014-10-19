@@ -145,7 +145,11 @@ void ofApp::onMessage( ofxLibwebsockets::Event& args ){
                 commands.push_back(newcommands[i]);
             }
         } else {
-            commands.push_back(args.message);
+            
+            vector<string> image = ofSplitString(args.data.getText(), ":");
+            if (image.size()!=3){
+                commands.push_back(args.message);
+            }
         }
         
     }
