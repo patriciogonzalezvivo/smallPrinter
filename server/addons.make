@@ -1,0 +1,2 @@
+ofxThermalPrinter
+ofxLibwebsockets
