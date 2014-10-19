@@ -4,6 +4,7 @@
 void ofApp::setup(){
     ofSetFrameRate(60);
     
+//    client.connect("192.168.1.17",9093);
     client.connect("localhost", 9093);
     client.addListener(this);
     
@@ -64,7 +65,11 @@ void ofApp::onBroadcast( ofxLibwebsockets::Event& args ){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    if (key == 'a') {
+        client.send("heatingDots:60");
+    } else if (key == 't'){
+        client.send("Esto es un ejemplo");
+    }
 }
 
 //--------------------------------------------------------------

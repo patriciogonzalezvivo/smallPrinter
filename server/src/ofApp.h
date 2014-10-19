@@ -30,6 +30,7 @@ public:
     void onBroadcast( ofxLibwebsockets::Event& args );
     
     ofxLibwebsockets::Server server;
+    vector<string> commands;
     
     ofBuffer    buff;
     ofMutex     mutex;
@@ -38,4 +39,6 @@ public:
     ofPixels    pixels;
     
     ofxThermalPrinter printer;
+    int     heatingDots, heatingTime, heatingInterval;
+    int     printDensity, printBreakTime;
 };
